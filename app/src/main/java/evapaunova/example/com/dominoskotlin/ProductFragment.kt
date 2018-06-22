@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import evapaunova.example.com.dominoskotlin.model.Pizza
 import java.text.DecimalFormat
 
@@ -42,6 +44,11 @@ class ProductFragment : Fragment() {
 
         val price:TextView = root.findViewById(R.id.pizza_price)
         price.setText("${precision.format(pizza.price)} BGN")
+
+        val order: ImageButton = root.findViewById(R.id.add_to_cart)
+        order.setOnClickListener(View.OnClickListener {
+            Toast.makeText(this.context, "Добави в количката " + pizza.name, Toast.LENGTH_SHORT).show()
+        })
 
         return root
     }
