@@ -3,6 +3,7 @@ package evapaunova.example.com.dominoskotlin
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
@@ -70,8 +71,13 @@ class RegisterActivity : AppCompatActivity() {
 
                 i.putExtra("User", user)
 
-                setResult(567, i)
-                finish()
+                if(intent != null && intent.extras != null && intent.extras.getInt("requestCode") == 234){
+                    setResult(567, i)
+                    finish()
+                }
+                else{
+                    startActivity(i)
+                }
             }
         })
     }

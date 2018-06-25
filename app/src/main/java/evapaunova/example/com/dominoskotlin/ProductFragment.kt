@@ -80,13 +80,17 @@ class ProductFragment : Fragment() {
             }
         }
 
+
+        val picker = DatePickerDialog(context,
+                dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH))
+        picker.datePicker.setMinDate(System.currentTimeMillis())
+
         button_date!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                DatePickerDialog(context,
-                        dateSetListener,
-                        cal.get(Calendar.YEAR),
-                        cal.get(Calendar.MONTH),
-                        cal.get(Calendar.DAY_OF_MONTH)).show()
+                picker.show()
             }
 
         })

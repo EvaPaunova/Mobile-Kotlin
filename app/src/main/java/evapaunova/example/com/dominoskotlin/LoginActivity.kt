@@ -29,6 +29,13 @@ class LoginActivity : AppCompatActivity() {
 
         users.add(User("Eva", "12345", 21, true))
 
+        if (intent != null) {
+            val newUser = intent.extras.get("User") as User
+            users.add(newUser)
+            username.setText(newUser.username)
+            password.setText(newUser.password)
+        }
+
         val login: ImageButton = login_button
         login.setOnClickListener(View.OnClickListener {
             var currentUser = User(username.text.toString(), password.text.toString())
@@ -54,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
         val register: Button = button_ToRegister
         register.setOnClickListener(View.OnClickListener {
             val i = Intent(this@LoginActivity, RegisterActivity::class.java)
+            i.putExtra("requestCode", 234);
             startActivityForResult(i, 234)
         })
 
