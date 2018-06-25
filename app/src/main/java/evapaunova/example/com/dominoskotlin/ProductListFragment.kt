@@ -9,20 +9,25 @@ import android.view.View
 import android.view.ViewGroup
 import evapaunova.example.com.dominoskotlin.model.Pizza
 import java.util.ArrayList
+import kotlinx.android.synthetic.main.fragment_product_list.*
 
 
 class ProductListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var iconView: RecyclerView
-    private lateinit var root: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_product_list, container, false)
 
-        recyclerView = root.findViewById(R.id.pizzaList)
+
+        return inflater.inflate(R.layout.fragment_product_list, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        recyclerView = pizzaList
 
         val pizzas = ArrayList<Pizza>()
 
@@ -59,11 +64,11 @@ class ProductListFragment : Fragment() {
         pizzas.add(Pizza("Валтелина", 19.90, ingValtelina, R.drawable.valtelina))
 
 
-        recyclerView.setAdapter(PizzaAdapter(pizzas, root.context))
-        recyclerView.setLayoutManager(LinearLayoutManager(context))
+        recyclerView.adapter = PizzaAdapter(pizzas, requireActivity())
+        recyclerView.layoutManager = LinearLayoutManager(activity)
 
 
-        iconView = root.findViewById(R.id.categoryList)
+        iconView = categoryList
         val ikonki = ArrayList<Int>()
         ikonki.add(R.drawable.taco)
         ikonki.add(R.drawable.coctail)
@@ -74,10 +79,8 @@ class ProductListFragment : Fragment() {
         ikonki.add(R.drawable.cactus)
         ikonki.add(R.drawable.duner)
 
-        iconView.setAdapter(IconAdapter(ikonki, root.context))
-        iconView.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true))
-
-        return root
+        iconView.adapter = IconAdapter(ikonki, requireActivity())
+        iconView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
     }
 
 }

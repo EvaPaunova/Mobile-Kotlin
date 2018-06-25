@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import evapaunova.example.com.dominoskotlin.model.User
+import kotlinx.android.synthetic.main.activity_logged.*
 
 class LoggedActivity : AppCompatActivity() {
 
@@ -16,26 +17,26 @@ class LoggedActivity : AppCompatActivity() {
 
         val user = intent.extras.getSerializable("User") as User
 
-        val username: TextView = findViewById(R.id.name)
-        val age: TextView = findViewById(R.id.age)
-        val gender: TextView = findViewById(R.id.gender)
+        val username: TextView = name
+        val age: TextView = age
+        val gender: TextView = gender
 
-        username.setText(user.username)
-        age.setText(user.age.toString() + "")
+        username.text = user.username
+        age.text = user.age.toString() + ""
         if (user.isFemale) {
-            gender.setText("female.")
+            gender.text = "female."
         } else {
-            gender.setText("male.")
+            gender.text = "male."
         }
 
-        val logOut: Button = findViewById(R.id.button_logOut)
+        val logOut: Button = button_logOut
         logOut.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@LoggedActivity, LoginActivity::class.java)
             startActivity(intent)
             finish()
         })
 
-        val menu: Button = findViewById(R.id.button_menu)
+        val menu: Button = button_menu
         menu.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@LoggedActivity, MenuActivity::class.java)
             startActivity(intent)

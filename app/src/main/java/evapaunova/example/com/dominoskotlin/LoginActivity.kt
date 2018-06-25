@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import evapaunova.example.com.dominoskotlin.model.User
 import java.util.ArrayList
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -22,12 +24,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        username = findViewById(R.id.username)
-        password = findViewById(R.id.password)
+        username = email
+        password = password_first
 
         users.add(User("Eva", "12345", 21, true))
 
-        val login: Button = findViewById(R.id.button_Login)
+        val login: ImageButton = login_button
         login.setOnClickListener(View.OnClickListener {
             var currentUser = User(username.text.toString(), password.text.toString())
             var credentialsOK = false
@@ -49,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        val register: Button = findViewById(R.id.button_ToRegister)
+        val register: Button = button_ToRegister
         register.setOnClickListener(View.OnClickListener {
             val i = Intent(this@LoginActivity, RegisterActivity::class.java)
             startActivityForResult(i, 234)

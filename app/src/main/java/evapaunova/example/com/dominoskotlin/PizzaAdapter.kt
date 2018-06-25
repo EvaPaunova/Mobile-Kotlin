@@ -1,6 +1,5 @@
 package evapaunova.example.com.dominoskotlin
 
-import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.FragmentManager
@@ -33,8 +32,9 @@ class PizzaAdapter(val pizzas: ArrayList<Pizza>, val context: Context) : Recycle
         val pizza = pizzas[position]
         val bundle = Bundle()
         bundle.putSerializable("pizza", pizza)
-        holder.name.setText(pizza.name)
-        holder.price.setText(precision.format(pizza.price) + " " + "BGN")
+
+        holder.name.text = pizza.name
+        holder.price.text = precision.format(pizza.price) + " " + "BGN"
         val ingred = StringBuilder()
         for (i in 0 until pizza.getIngredients().size) {
             if (i != pizza.getIngredients().size - 1) {
@@ -50,7 +50,7 @@ class PizzaAdapter(val pizzas: ArrayList<Pizza>, val context: Context) : Recycle
 
         holder.infoButton.setOnClickListener {
             val details = ProductFragment()
-            details.setArguments(bundle)
+            details.arguments = bundle
             val fm = (context as AppCompatActivity).supportFragmentManager
             val transaction = fm.beginTransaction()
             fm.popBackStack("pizza", FragmentManager.POP_BACK_STACK_INCLUSIVE)

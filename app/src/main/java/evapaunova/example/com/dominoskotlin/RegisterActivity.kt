@@ -4,20 +4,21 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.ToggleButton
 import evapaunova.example.com.dominoskotlin.model.User
+import kotlinx.android.synthetic.main.registerform.*
 
 class RegisterActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.registerform)
 
-        val genderMale: ToggleButton = findViewById(R.id.gender_male)
-        val genderFemale: ToggleButton = findViewById(R.id.gender_female)
+        val genderMale: ToggleButton = gender_male
+        val genderFemale: ToggleButton = gender_female
 
         genderFemale.setOnClickListener(View.OnClickListener {
             if (genderFemale.isChecked()) {
@@ -35,14 +36,14 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
-        val register: Button = findViewById(R.id.button_register)
+        val register: ImageButton = button_register
         register.setOnClickListener(View.OnClickListener {
             val i = Intent(this@RegisterActivity, LoginActivity::class.java)
 
-            val username = findViewById(R.id.username) as TextView
-            val password = findViewById(R.id.password) as TextView
-            val passwordRepeat = findViewById(R.id.confirm_password) as TextView
-            val age = findViewById(R.id.age) as TextView
+            val username = email as TextView
+            val password = password as TextView
+            val passwordRepeat = confirm_password as TextView
+            val age = age as TextView
 
             var gender = false
             var ageInt = 0

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
+import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuActivity : AppCompatActivity() {
 
@@ -14,7 +15,7 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
 
         first = ProductListFragment()
-        if (findViewById(R.id.parent_view_p) as View? != null) {
+        if (parent_view_p as View? != null) {
             val fm = supportFragmentManager
             val transaction = fm.beginTransaction()
             transaction
