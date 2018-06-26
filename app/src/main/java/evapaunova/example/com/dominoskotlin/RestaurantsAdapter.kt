@@ -1,7 +1,9 @@
 package evapaunova.example.com.dominoskotlin
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import evapaunova.example.com.dominoskotlin.model.Restaurant
 import kotlinx.android.synthetic.main.restaurant_row.view.*
 import java.util.ArrayList
+import kotlin.coroutines.experimental.coroutineContext
 
 class RestaurantsAdapter (val restaurants: ArrayList<Restaurant>, val context: Context) : RecyclerView.Adapter<RestaurantViewHolder>() {
 
@@ -31,15 +34,19 @@ class RestaurantsAdapter (val restaurants: ArrayList<Restaurant>, val context: C
         holder.name.text = restaurant.name
         holder.address.text = restaurant.address
         holder.phoneNumber.text = restaurant.phoneNumber
+        holder.itemView.setOnClickListener( {
+            val intent = Intent(context, MenuActivity::class.java)
+            this.context.startActivity(intent)
+        })
     }
 
 }
 
-class RestaurantViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+class RestaurantViewHolder(v: View) : RecyclerView.ViewHolder(v){
 
     val name = v.restaurant_name
     val address = v.res_address
     val phoneNumber = v.res_phone
 
-
 }
+

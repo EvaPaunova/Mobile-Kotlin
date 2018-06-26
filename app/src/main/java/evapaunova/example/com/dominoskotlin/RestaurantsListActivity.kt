@@ -37,9 +37,6 @@ class RestaurantsListActivity : AppCompatActivity() {
         restaurants.add(res1)
         restaurants.add(res1)
 
-
-
-
         restaurantsView.adapter = RestaurantsAdapter(restaurants, this)
         restaurantsView.layoutManager = LinearLayoutManager(this)
     }
