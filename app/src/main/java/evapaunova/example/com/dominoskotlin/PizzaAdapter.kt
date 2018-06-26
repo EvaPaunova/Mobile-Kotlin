@@ -78,6 +78,7 @@ class PizzaAdapter(val pizzas: ArrayList<Pizza>, val context: Context) : Recycle
     }
 
 }
+
 class PizzaViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     val image = v.pizza_image

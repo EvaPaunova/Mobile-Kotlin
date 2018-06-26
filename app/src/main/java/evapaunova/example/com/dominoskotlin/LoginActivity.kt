@@ -3,7 +3,6 @@ package evapaunova.example.com.dominoskotlin
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -37,20 +36,21 @@ class LoginActivity : AppCompatActivity() {
         }
 
         val login: ImageButton = login_button
-        login.setOnClickListener(View.OnClickListener {
-            var currentUser: User
-            var credentialsOK = false
-            for (u in users) {
-                if (u.email.equals(email.text.toString()) && u.password.equals(password.text.toString())) {
-                    credentialsOK = true
-                    currentUser = User(u.firstName,u.lastName,u.email, u.password, u.age, u.isFemale)
-                    val intent = Intent(this@LoginActivity, LoggedActivity::class.java)
-                    val bundle = Bundle()
-                    bundle.putSerializable("User", currentUser)
-                    intent.putExtras(bundle)
-                    startActivity(intent)
+        login.setOnClickListener(
+            {
+                var currentUser: User
+                var credentialsOK = false
+                for (u in users) {
+                    if (u.email.equals(email.text.toString()) && u.password.equals(password.text.toString())) {
+                        credentialsOK = true
+                        currentUser = User(u.firstName,u.lastName,u.email, u.password, u.age, u.isFemale)
+                        val intent = Intent(this@LoginActivity, LoggedActivity::class.java)
+                        val bundle = Bundle()
+                        bundle.putSerializable("User", currentUser)
+                        intent.putExtras(bundle)
+                        startActivity(intent)
+                    }
                 }
-            }
 
             if (!credentialsOK) {
                 Toast.makeText(this@LoginActivity, "Wrong credentials!", Toast.LENGTH_SHORT).show()
@@ -59,11 +59,12 @@ class LoginActivity : AppCompatActivity() {
         })
 
         val register: Button = button_ToRegister
-        register.setOnClickListener(View.OnClickListener {
-            val i = Intent(this@LoginActivity, RegisterActivity::class.java)
-            i.putExtra("requestCode", 234);
-            startActivityForResult(i, 234)
-        })
+        register.setOnClickListener(
+            {
+                val i = Intent(this@LoginActivity, RegisterActivity::class.java)
+                i.putExtra("requestCode", 234);
+                startActivityForResult(i, 234)
+            })
 
     }
 

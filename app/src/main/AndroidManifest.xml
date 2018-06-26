@@ -20,7 +20,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".LaggedActivity" />
         <activity android:name=".LoggedActivity" />
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".RestaurantsListActivity"></activity>
     </application>
 
 </manifest>

@@ -63,10 +63,8 @@ class ProductListFragment : Fragment() {
         ingValtelina.add("Крем филаделфия, сметана, копа, кашкавал или моцарела, пармезан, чери домати и пресен босилек")
         pizzas.add(Pizza("Валтелина", 19.90, ingValtelina, R.drawable.valtelina))
 
-
         recyclerView.adapter = PizzaAdapter(pizzas, requireActivity())
         recyclerView.layoutManager = LinearLayoutManager(activity)
-
 
         iconView = categoryList
         val ikonki = ArrayList<Int>()
@@ -80,7 +78,7 @@ class ProductListFragment : Fragment() {
         ikonki.add(R.drawable.duner)
 
         iconView.adapter = IconAdapter(ikonki, requireActivity())
-        iconView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
+        iconView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, true)
     }
 
 }

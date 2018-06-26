@@ -42,6 +42,12 @@ class LoggedActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
+        val rests: Button = try_button
+        rests.setOnClickListener({
+            val intent = Intent(this, RestaurantsListActivity::class.java)
+            startActivity(intent)
+        })
+
     }
 }
 
