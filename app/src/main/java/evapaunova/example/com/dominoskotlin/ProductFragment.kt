@@ -46,7 +46,7 @@ class ProductFragment : Fragment() {
 
         ingredients= pizza_ingredients
         val ingred = StringBuilder()
-        for (i in 0 until pizza!!.getIngredients().size) {
+        for (i in 0 until pizza.getIngredients().size) {
             if (i != pizza.getIngredients().size - 1) {
                 ingred.append(pizza.getIngredients().get(i) + ", ")
             } else {
@@ -88,7 +88,7 @@ class ProductFragment : Fragment() {
                 cal.get(Calendar.DAY_OF_MONTH))
         picker.datePicker.setMinDate(System.currentTimeMillis())
 
-        button_date!!.setOnClickListener(object : View.OnClickListener {
+        button_date.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 picker.show()
             }

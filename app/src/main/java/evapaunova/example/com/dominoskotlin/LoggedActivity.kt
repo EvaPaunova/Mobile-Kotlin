@@ -21,7 +21,7 @@ class LoggedActivity : AppCompatActivity() {
         val age: TextView = age
         val gender: TextView = gender
 
-        username.text = user.username
+        username.text = user.firstName
         age.text = user.age.toString() + ""
         if (user.isFemale) {
             gender.text = "female."

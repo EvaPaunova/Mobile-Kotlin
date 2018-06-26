@@ -16,7 +16,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.registerform)
+        setContentView(R.layout.activity_register)
 
         val genderMale: ToggleButton = gender_male
         val genderFemale: ToggleButton = gender_female
@@ -41,7 +41,9 @@ class RegisterActivity : AppCompatActivity() {
         register.setOnClickListener(View.OnClickListener {
             val i = Intent(this@RegisterActivity, LoginActivity::class.java)
 
-            val username = email as TextView
+            val email = email as TextView
+            val fName = first_name as TextView
+            val lName = last_name as TextView
             val password = password as TextView
             val passwordRepeat = confirm_password as TextView
             val age = age as TextView
@@ -60,14 +62,14 @@ class RegisterActivity : AppCompatActivity() {
                 gender = true
             }
 
-            if (!validUsername(username.getText().toString())) {
-                username.setError("Wrong username!")
+            if (!validUsername(email.getText().toString())) {
+                email.setError("Wrong username!")
             } else if (!validPassword(password.getText().toString(), passwordRepeat.getText().toString())) {
                 password.setError("Wrong password!")
             } else if (!validAge(ageInt)) {
                 age.setError("Invalid age!")
             } else {
-                val user = User(username.getText().toString(), password.getText().toString(), Integer.parseInt(age.getText().toString()), gender)
+                val user = User(fName.text.toString(),lName.text.toString(),email.text.toString(), password.text.toString(), Integer.parseInt(age.text.toString()), gender)
 
                 i.putExtra("User", user)
 

@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
 
     private var users = ArrayList<User>()
 
-    private lateinit var username: EditText
+    private lateinit var email: EditText
     private lateinit var password: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,26 +24,26 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        username = email
+        email = email_
         password = password_first
 
-        users.add(User("Eva", "12345", 21, true))
+        users.add(User("Eva", "Paunova", "asdf@mail.bg", "12345", 21, true))
 
-        if (intent != null) {
+        if (intent != null && intent.extras != null && intent.extras.get("User") != null) {
             val newUser = intent.extras.get("User") as User
             users.add(newUser)
-            username.setText(newUser.username)
+            email.setText(newUser.email)
             password.setText(newUser.password)
         }
 
         val login: ImageButton = login_button
         login.setOnClickListener(View.OnClickListener {
-            var currentUser = User(username.text.toString(), password.text.toString())
+            var currentUser: User
             var credentialsOK = false
             for (u in users) {
-                if (u.username.equals(currentUser.username) && u.password.equals(currentUser.password)) {
+                if (u.email.equals(email.text.toString()) && u.password.equals(password.text.toString())) {
                     credentialsOK = true
-                    currentUser = User(u.username, u.password, u.age, u.isFemale)
+                    currentUser = User(u.firstName,u.lastName,u.email, u.password, u.age, u.isFemale)
                     val intent = Intent(this@LoginActivity, LoggedActivity::class.java)
                     val bundle = Bundle()
                     bundle.putSerializable("User", currentUser)
@@ -72,14 +72,14 @@ class LoginActivity : AppCompatActivity() {
         if (data != null) {
             val newUser = data.getSerializableExtra("User") as User
             users.add(newUser)
-            username.setText(newUser.username)
+            email.setText(newUser.email)
             password.setText(newUser.password)
         }
     }
 
     override fun onStop() {
         super.onStop()
-        username.setText("")
+        email.setText("")
         password.setText("")
     }
 }
