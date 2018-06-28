@@ -20,10 +20,10 @@ class OraculActivity : AppCompatActivity() {
 
         val ask = ask_button
         ask.setOnClickListener({
-            val write_question = textView5
-            val show_question = question
-            show_question.text = write_question.text.toString()
-            write_question.setText("")
+            val writeQuestion = textView5
+            val showQuestion = question
+            showQuestion.text = writeQuestion.text.toString()
+            writeQuestion.setText("")
             AskTask().execute()
 
         })
