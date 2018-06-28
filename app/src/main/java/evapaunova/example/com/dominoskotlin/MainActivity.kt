@@ -14,20 +14,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val goToLogin : ImageButton = login_button
-        goToLogin.setOnClickListener(View.OnClickListener {
+        goToLogin.setOnClickListener( {
             val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
         })
 
         val goToRegister : ImageButton = register_button
-        goToRegister.setOnClickListener(View.OnClickListener {
+        goToRegister.setOnClickListener( {
             val intent = Intent(this@MainActivity, RegisterActivity::class.java)
             startActivity(intent)
         })
 
         val goToMenu: ImageButton = menu_button
-        goToMenu.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this@MainActivity, MenuActivity::class.java)
+        goToMenu.setOnClickListener( {
+            val intent = Intent(this@MainActivity, RestaurantsListActivity::class.java)
             startActivity(intent)
         })
     }

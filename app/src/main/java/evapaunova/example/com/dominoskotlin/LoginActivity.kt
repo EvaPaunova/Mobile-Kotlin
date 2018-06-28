@@ -3,13 +3,14 @@ package evapaunova.example.com.dominoskotlin
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import android.support.v7.app.ActionBar
+import android.widget.*
 import evapaunova.example.com.dominoskotlin.model.User
 import java.util.ArrayList
 import kotlinx.android.synthetic.main.activity_login.*
+import android.widget.TextView
+
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -22,6 +23,13 @@ class LoginActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        var actionBar = supportActionBar
+        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        actionBar?.setCustomView(R.layout.my_layout)
+        var textView = actionBar?.customView?.findViewById<TextView>(R.id.titleText)
+        textView?.text = resources.getText(R.string.app_login)
+
 
         email = email_
         password = password_first

@@ -3,6 +3,7 @@ package evapaunova.example.com.dominoskotlin
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.ActionBar
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
@@ -16,6 +17,12 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        var actionBar = supportActionBar
+        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        actionBar?.setCustomView(R.layout.my_layout)
+        var textView = actionBar?.customView?.findViewById<TextView>(R.id.titleText)
+        textView?.text = resources.getText(R.string.app_register)
 
         val genderMale: ToggleButton = gender_male
         val genderFemale: ToggleButton = gender_female
